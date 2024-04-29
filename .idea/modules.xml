@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/product_list-master/product_list/product_list.iml" filepath="$PROJECT_DIR$/product_list-master/product_list/product_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/product_list-master.iml" filepath="$PROJECT_DIR$/.idea/product_list-master.iml" />
+    </modules>
+  </component>
+</project>

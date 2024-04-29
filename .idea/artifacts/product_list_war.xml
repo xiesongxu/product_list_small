@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="product_list:war">
+    <output-path>$PROJECT_DIR$/product_list-master/product_list/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>product_list</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="product_list.war">
+      <element id="artifact" artifact-name="product_list:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storems.admin.dao.ProductListDao">
+
+    <insert id="save" parameterType="com.storems.admin.entity.ProductList" >
+        INSERT INTO product_list (serialno,productID,productName,productValue,productSum,remark,flag,expireDate,inputDate,updateDate,userid)
+        VALUES (#{serialno},#{productID},#{productName},#{productValue},#{productSum},#{remark}, #{flag},#{expireDate},#{inputDate},#{updateDate},#{userid})
+    </insert>
+
+    <update id="update" parameterType="com.storems.admin.entity.ProductList" >
+        UPDATE product_list
+        SET
+            productID =#{productID},
+            productName =#{productName},
+            productValue =#{productValue},
+            productSum =#{productSum},
+            remark =#{remark},
+            flag =#{flag},
+            expireDate =#{expireDate},
+            inputDate =#{inputDate},
+            updateDate =#{updateDate},
+            userid =#{userid}
+            WHERE serialno = #{serialno}
+    </update>
+
+    <delete id="delete" >
+        DELETE FROM product_list WHERE serialno = #{serialno}
+    </delete>
+
+    <insert id="batchSave">
+        INSERT INTO product_list (serialno,productID,productName,productValue,productSum,remark,flag,expireDate,inputDate,updateDate,userid) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.serialno},#{item.productID},#{item.productName},#{item.productValue},#{item.productSum},#{item.remark}, #{item.flag},#{item.expireDate},#{item.inputDate},#{item.updateDate},#{item.userid})
+        </foreach>
+    </insert>
+
+    <insert id="batchUpdate">
+        <foreach collection="list" item="item" index="index" separator=";" open="" close="">
+            UPDATE product_list SET
+            productID =#{item.productID},
+            productName =#{item.productName},
+            productValue =#{item.productValue},
+            productSum =#{item.productSum},
+            remark =#{item.remark},
+            flag =#{item.flag},
+            expireDate =#{item.expireDate},
+            inputDate =#{item.inputDate},
+            updateDate =#{item.updateDate},
+            userid =#{item.userid}
+            WHERE serialno = #{item.serialno}
+        </foreach>
+    </insert>
+
+    <select id="findProductList" resultType="java.util.Map" parameterType="java.util.Map">
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list where flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
+            limit #{begin},  #{pageSize}
+    </select>
+
+    <select id="findProductSafeListPage" resultType="java.util.Map" parameterType="java.util.Map">
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list where flag='1' and (expireDate - timestampdiff(day,inputDate,#{curtime}))>3
+            limit #{begin},  #{pageSize}
+    </select>
+
+    <select id="findProductSomeSafeListPage" resultType="java.util.Map" parameterType="java.util.Map">
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list where flag='1' and 4>(expireDate - timestampdiff(day,inputDate,#{curtime}))>0
+            limit #{begin},  #{pageSize}
+    </select>
+
+    <select id="findProductUnsafeListPage" resultType="java.util.Map" parameterType="java.util.Map">
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list where flag='1' and 0>=(expireDate - timestampdiff(day,inputDate,#{curtime}))
+            limit #{begin},  #{pageSize}
+    </select>
+
+
+    <select id="findByProductId" resultType="com.storems.admin.entity.ProductList" parameterType="java.lang.String" >
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list
+        where productID=#{productID} and flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
+        order by inputDate asc
+    </select>
+
+    <select id="findSumByProductId" resultType="java.lang.Integer" >
+        select sum(productSum)
+        from product_list
+        where productID=#{productID} and flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
+    </select>
+
+    <select id="findSumProductList" resultType="java.lang.Integer" >
+        select sum(productSum)
+        from product_list
+        where flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
+    </select>
+
+    <select id="findProductBySerialno" resultType="com.storems.admin.entity.ProductList" >
+        select serialno,
+               productID,
+               productName,
+               productValue,
+               productSum,
+               remark,
+               flag,
+               expireDate,
+               inputDate,
+               updateDate,
+               userid
+        from product_list
+        where serialno=#{serialno}
+    </select>
+
+</mapper>
