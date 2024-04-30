@@ -78,7 +78,7 @@
 	<hr />
 	<div class="div_foot">
 		<div class="div_foot_left" style="font-size: 14px;">
-			总共有 <strong id="resultCount" style="color:#F81055;">0</strong> 条记录,
+			总共有 <strong id="resultCount" style="color:#F81055;">0</strong> 件商品,
 			当前第 <strong id="currentPage" style="color:#F81055;">0</strong> 页,
 			共 <strong id="pageCount" style="color:#F81055;">0</strong> 页
 		</div>
@@ -125,22 +125,22 @@
 					<td style="width: 170px;"><input type="text" id="productName" name="productName" /></td>
 				</tr>
 				<tr>
-					<td>商品总金额:</td>
-					<td><input type="text" id="productValue" name="productValue" maxlength="8"/>&nbsp;&nbsp;元</td>
+					<td>总金额:</td>
+					<td><input type="text" id="productValue" name="productValue" maxlength="8" style="width: 135px;"/>元</td>
 					<td>商品总数:</td>
-					<td><input type="text" id="productSum" name="productSum" /></td>
+					<td><input type="text" id="productSum" name="productSum" maxlength="8" /></td>
 				</tr>
 				<tr>
 					<td>过期时间:</td>
-					<td><input type="text" id="expireDate" name="expireDate" /></td>
+					<td><input type="text" id="expireDate" name="expireDate" style="width: 135px;"/>天</td>
 					<td>修改时间:</td>
-					<td><input type="text" id="updateDate" name="updateDate" style="width: 140px;" /></td>
+					<td><input type="date" id="updateDate" name="updateDate" /></td>
 				</tr>
 				<tr>
 					<td>输入时间:</td>
-					<td><input type="text" id="inputDate" name="inputDate" /></td>
+					<td><input type="date" id="inputDate" name="inputDate" /></td>
 					<td>用户:</td>
-					<td><input type="text" id="userid" name="userid" style="width: 140px;"/></td>
+					<td><input type="text" id="userid" name="userid" /></td>
 				</tr>
 				<tr>
 					<td valign="top" style="padding-top: 2px;">备注:</td>
@@ -171,11 +171,7 @@
 						<input type="radio" id="2" name="flag" value="2"/>出库
 					</td>
 				</tr>
-<%--				<tr>--%>
-<%--					<td style="width: 130px;">--%>
-<%--						<input type="submit"  value="提交"/>--%>
-<%--					</td>--%>
-<%--				</tr>--%>
+
 			</table>
 		</form>
 	</div>

@@ -145,6 +145,12 @@
         where flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
     </select>
 
+    <select id="findCountProductList" resultType="java.lang.Integer" >
+        select count(1)
+        from product_list
+        where flag='1' and (expireDate - timestampdiff(day,inputDate,#{curDate}))>0
+    </select>
+
     <select id="findProductBySerialno" resultType="com.storems.admin.entity.ProductList" >
         select serialno,
                productID,

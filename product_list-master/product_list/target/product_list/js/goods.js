@@ -163,9 +163,9 @@ $(function() {
 				return false;
 			$.ajax({
 				type : "post",
-				url : templateRoot + 'goods/Goods_deleteByIds.action',
+				url : templateRoot + 'delete_product.do',
 				data : {
-					"relationId" : idsArr
+					"serialno" : idsArr
 				},
 				dataType : "json",
 				cache : false,
@@ -229,9 +229,9 @@ $(function() {
 		openInput();
 		$.ajax({
 			type : "post",
-			url : templateRoot + 'goods/Goods_getById.action',
+			url : templateRoot + '/product_info.do',
 			data : {
-				"relationId" : id
+				"serialno" : id
 			},
 			dataType : "json",
 			cache : false,
@@ -318,32 +318,32 @@ $(function() {
 		var errorMsg = $("#errorMsg");
 		var msg = "false";
 		errorMsg.html("");
-		if (!$("#name").val()) {
-			$("#name").focus();
-			errorMsg.html("请输入商品名称");
-		} else if (!$("#code").val()) {
-			$("#code").focus();
-			errorMsg.html("请输入商品编码");
-		} else if (!$("#type").val()) {
-			$("#type").focus();
-			errorMsg.html("请输入商品类型");
-		} else if (!$("#specification").val()) {
-			$("#specification").focus();
-			errorMsg.html("请输入商品规格");
-		} else if (!$("#unit").val()) {
-			$("#unit").focus();
-			errorMsg.html("请输入计量单位");
-		} else if (!$("#price").val()) {
-			$("#price").focus();
-			errorMsg.html("请输入商品单价");
-		} else if (!$("#productionDate").val()) {
-			$("#productionDate").focus();
-			errorMsg.html("请选择生产日期");
-		} else if (!$("#shelfLife").val()) {
-			$("#shelfLife").focus();
-			errorMsg.html("请输入保质期");
-		} else if (!$("#note").val()) {
-			$("#note").focus();
+		if (!$("#productID").val()) {
+			$("#productID").focus();
+			errorMsg.html("请输入商品ID");
+		} else if (!$("#productName").val()) {
+			$("#productName").focus();
+			errorMsg.html("请输入商品名");
+		} else if (!$("#productValue").val()) {
+			$("#productValue").focus();
+			errorMsg.html("请输入商品总金额");
+		} else if (!$("#productSum").val()) {
+			$("#productSum").focus();
+			errorMsg.html("请输入商品总数");
+		} else if (!$("#expireDate").val()) {
+			$("#expireDate").focus();
+			errorMsg.html("请输入过期时间");
+		} else if (!$("#updateDate").val()) {
+			$("#updateDate").focus();
+			errorMsg.html("请输入修改时间");
+		} else if (!$("#inputDate").val()) {
+			$("#inputDate").focus();
+			errorMsg.html("请选择输入时间");
+		} else if (!$("#userid").val()) {
+			$("#userid").focus();
+			errorMsg.html("请输入用户");
+		} else if (!$("#remark").val()) {
+			$("#remark").focus();
 			errorMsg.html("请输入备注信息");
 		} else {
 			msg = "true";
@@ -356,16 +356,16 @@ $(function() {
 		if (state === "false") {
 			return false;
 		} else {
-			paramString = $("#name").val() + ",";
-			paramString += $("#code").val() + ",";
-			paramString += $("#type").val() + ",";
-			paramString += $("#specification").val() + ",";
-			paramString += $("#unit").val() + ",";
-			paramString += $("#price").val() + ",";
-			paramString += $("#productionDate").val() + ",";
-			paramString += $("#shelfLife").val() + ",";
-			paramString += $("#note").val() + ",";
-			paramString += $("#id").val();
+			paramString = $("#productID").val() + ",";
+			paramString += $("#productName").val() + ",";
+			paramString += $("#productValue").val() + ",";
+			paramString += $("#productSum").val() + ",";
+			paramString += $("#expireDate").val() + ",";
+			paramString += $("#updateDate").val() + ",";
+			paramString += $("#inputDate").val() + ",";
+			paramString += $("#userid").val() + ",";
+			paramString += $("#remark").val() + ",";
+			paramString += $("#serialno").val();
 
 			$.ajax({
 				type : "post",

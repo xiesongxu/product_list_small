@@ -65,4 +65,17 @@ public interface ProductListService {
      */
     public void update(ProductList product);
 
+    /**
+     * 删除数据
+     * @param serialno
+     */
+    public void delete(String serialno);
+
+    /**
+     * 查询商品的条数
+     * @param curDate
+     * @return
+     */
+    public int findCountProductList(String curDate);
+
 }

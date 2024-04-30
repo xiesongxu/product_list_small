@@ -125,20 +125,20 @@
 					<td style="width: 170px;"><input type="text" id="productName" name="productName" /></td>
 				</tr>
 				<tr>
-					<td>商品总金额:</td>
-					<td><input type="text" id="productValue" name="productValue" maxlength="8" style="width: 100px;"/>&nbsp;&nbsp;元</td>
+					<td>总金额:</td>
+					<td><input type="text" id="productValue" name="productValue" maxlength="8" style="width: 135px;"/>元</td>
 					<td>商品总数:</td>
-					<td><input type="text" id="productSum" name="productSum" maxlength="8" style="width: 100px;"/></td>
+					<td><input type="text" id="productSum" name="productSum" maxlength="8" /></td>
 				</tr>
 				<tr>
 					<td>过期时间:</td>
-					<td><input type="text" id="expireDate" name="expireDate" /></td>
+					<td><input type="text" id="expireDate" name="expireDate" style="width: 135px;"/>天</td>
 					<td>修改时间:</td>
-					<td><input type="text" id="updateDate" name="updateDate" /></td>
+					<td><input type="date" id="updateDate" name="updateDate" /></td>
 				</tr>
 				<tr>
 					<td>输入时间:</td>
-					<td><input type="text" id="inputDate" name="inputDate" /></td>
+					<td><input type="date" id="inputDate" name="inputDate" /></td>
 					<td>用户:</td>
 					<td><input type="text" id="userid" name="userid" /></td>
 				</tr>

@@ -65,6 +65,8 @@ public class ProductListServiceImpl implements ProductListService {
             for (ProductList pd : productLists) {
                 //获取入库商品的数量
                 double sum = Double.valueOf(pd.getProductSum());
+                //获取出库商品数
+                double outProductSum = productSum;
                 //减去入库商品，得到还存在的出库商品
                 productSum = productSum-sum;
                 //出库商品已经被全部计算
@@ -81,8 +83,8 @@ public class ProductListServiceImpl implements ProductListService {
                     productList.setSerialno(ProductUtil.getSerialNo());
                     productList.setProductID(productID);
                     productList.setProductName(product.getProductName());
-                    productList.setProductValue(String.valueOf(meanValue*productSum));
-                    productList.setProductSum(String.valueOf(productSum));
+                    productList.setProductValue(String.valueOf(meanValue*outProductSum));
+                    productList.setProductSum(String.valueOf(outProductSum));
                     productList.setRemark(product.getRemark());
                     productList.setFlag("2");
                     productList.setExpireDate(product.getExpireDate());
@@ -143,6 +145,7 @@ public class ProductListServiceImpl implements ProductListService {
      * 新增一条商品数据
      * @param productList
      */
+    @Transactional
     public void save(ProductList productList) {
         productListDao.save(productList);
     }
@@ -151,7 +154,26 @@ public class ProductListServiceImpl implements ProductListService {
      * 修改数据
      * @param product
      */
+    @Transactional
     public void update(ProductList product) {
         productListDao.update(product);
+    }
+
+    /**
+     * 删除数据
+     * @param serialno
+     */
+    @Transactional
+    public void delete(String serialno){
+        productListDao.delete(serialno);
+    }
+
+    /**
+     * 查询商品的条数
+     * @param curDate
+     * @return
+     */
+    public int findCountProductList(String curDate) {
+        return productListDao.findCountProductList(curDate);
     }
 }

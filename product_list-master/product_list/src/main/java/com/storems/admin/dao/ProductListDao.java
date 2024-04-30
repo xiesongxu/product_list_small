@@ -29,9 +29,9 @@ public interface ProductListDao {
 
     /**
      * 删除数据
-     * @param product
+     * @param serialno
      */
-    public void delete(ProductList product);
+    public void delete(@Param("serialno") String serialno);
 
     /**
      * 批量保存数据
@@ -100,5 +100,12 @@ public interface ProductListDao {
      * @return
      */
     public ProductList findProductBySerialno(@Param("serialno") String serialno);
+
+    /**
+     * 查询商品的条数
+     * @param curDate
+     * @return
+     */
+    public int findCountProductList(String curDate);
 
 }
